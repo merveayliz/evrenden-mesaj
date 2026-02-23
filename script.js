@@ -9,17 +9,15 @@ const kehanetler = [
     "Şu an kimsenin görmediği bir mücadele veriyor olabilirsin ama unutma, en sessiz savaşlar en büyük zaferleri getirir 🛡️ İçindeki gücü hafife alma. Sen düşündüğünden daha dayanıklısın 🌿",
     "Hayat bir maraton, sprint değil 🏃‍♀️ Bazen hızlanırsın, bazen yavaşlarsın ama önemli olan yarışta kalmak. Sen yoldasın ve bu bile başlı başına bir başarı. Kendine inan, çünkü gerçekten başarabilecek potansiyele sahipsin ✨💖"
 ];
-// script.js
 
-// ... (kehanetler dizisi aynı kalsın)
 
 const deck = document.getElementById('deck');
 const modal = document.getElementById('modal');
 const typingText = document.getElementById('typing-text');
 
-let typingInterval; // Daktilo sürecini kontrol etmek için değişken
+let typingInterval; 
 
-// 1. Kartları Oluştur
+
 function createCards() {
     deck.innerHTML = '';
     for(let i=0; i<7; i++) {
@@ -31,7 +29,7 @@ function createCards() {
     }
 }
 
-// 2. Kartları Karıştır (Shuffle)
+
 function shuffleDeck() {
     const cards = document.querySelectorAll('.card');
     cards.forEach((card, index) => {
@@ -41,22 +39,22 @@ function shuffleDeck() {
     });
 }
 
-// 3. Kart Seçme ve Daktilo Efekti
+
 function selectCard(card) {
-    // ÖNEMLİ: Eğer içeride çalışan bir daktilo varsa onu durdur
+  
     clearTimeout(typingInterval); 
     
     modal.classList.add('active');
     const randomKehanet = kehanetler[Math.floor(Math.random() * kehanetler.length)];
     
-    typingText.innerText = ''; // Önceki yazıyı temizle
+    typingText.innerText = ''; 
     let i = 0;
     
     function typeWriter() {
         if (i < randomKehanet.length) {
             typingText.innerText += randomKehanet.charAt(i);
             i++;
-            // Yeni daktilo adımını değişkene ata
+           
             typingInterval = setTimeout(typeWriter, 40); 
         }
     }
@@ -64,7 +62,7 @@ function selectCard(card) {
 }
 
 function closeModal() {
-    // Kartı kapatırken daktiloyu durdur ve metni sıfırla
+  
     clearTimeout(typingInterval);
     typingText.innerText = '';
     modal.classList.remove('active');
@@ -72,4 +70,5 @@ function closeModal() {
 }
 
 createCards();
+
 shuffleDeck();
