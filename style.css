@@ -1,9 +1,7 @@
-/* style.css */
 :root {
     --soft-purple: #a18cd1;
     --soft-pink: #fbc2eb;
     --text-color: #4a4a4a;
-    /* Arka planı tamamen düz beyaz yerine çok hafif bir krem yaptım */
     --bg-light: #fdfcfb; 
     --card-gradient: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
 }
@@ -16,12 +14,12 @@ body {
     height: 100vh;
 }
 
-/* Cızırtı efektini sildik, sadece temiz bir ekran kaldı */
+
 .overlay { display: none; }
 
 .main-frame { display: flex; flex-direction: column; align-items: center; padding-top: 50px; }
 
-/* Başlık artık daha zarif */
+
 .glitch { 
     font-size: 2.8rem; 
     color: var(--soft-purple); 
@@ -29,7 +27,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* DESTE VE KARTLAR */
+
 .deck {
     display: flex; gap: 15px; position: relative; height: 300px;
     margin-top: 50px; justify-content: center; width: 100%;
@@ -49,21 +47,21 @@ body {
 .card-front, .card-back {
     position: absolute; width: 100%; height: 100%;
     backface-visibility: hidden; 
-    border-radius: 15px; /* Daha yuvarlak ve yumuşak */
+    border-radius: 15px; 
 }
 
-/* Kartın Arka Yüzü - Artık Soft Desenli */
+
 .card-front {
     background: var(--card-gradient);
     border: 2px solid white;
     box-shadow: 0 8px 15px rgba(161, 140, 209, 0.3);
 }
 
-/* Seçilen Kartın Yakınlaşması (Modal) */
+
 .modal {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(255, 255, 255, 0.85); /* Beyaz şeffaf arka plan */
-    backdrop-filter: blur(5px); /* Arkayı hafif bulanıklaştırır */
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(5px); 
     display: none;
     justify-content: center; align-items: center; z-index: 100;
 }
@@ -72,7 +70,7 @@ body {
 
 .modal .card-inner { width: 300px; height: 480px; transform: rotateY(180deg); }
 
-/* Kartın Ön Yüzü (Mesajın yazdığı yer) */
+
  .card-back {
     background: white; 
     color: var(--text-color); 
@@ -84,27 +82,27 @@ body {
     align-items: center;
     border: 1px solid #eee;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    position: relative; /* Butonu alta sabitlemek için önemli */
+    position: relative;
 }
-/* Mesaj Alanı */
+
 .kehanet {
     font-size: 1.1rem;
     line-height: 1.6;
     text-align: center;
-    /* Kartın içinde butonun üzerine binmemesi için alt boşluk */
+  
     margin-bottom: 60px; 
-    /* Metin çok uzunsa taşmasın diye */
+  
     max-height: 70%;
     overflow-y: auto;
 }
 
 @keyframes zoomIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-/* Daktilo Kursörü */
+
 .kehanet::after { content: "|"; color: var(--soft-purple); animation: blink 0.7s infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 
-/* BUTONLAR - Yumuşacık yapıldı */
+
 button {
     background: var(--soft-purple); 
     border: none; 
@@ -112,7 +110,7 @@ button {
     padding: 12px 25px; 
     cursor: pointer; 
     font-weight: bold; 
-    border-radius: 50px; /* Tam yuvarlak */
+    border-radius: 50px; 
     transition: 0.3s;
     box-shadow: 0 4px 10px rgba(161, 140, 209, 0.3);
 }
@@ -122,7 +120,7 @@ button:hover {
     background: var(--soft-pink);
 }
 
-/* Kapat butonu kartın tam altına sabitlensin */
+
 .close-btn {
     position: absolute;
     bottom: 25px;
@@ -135,10 +133,10 @@ button:hover {
 }
 
 
-/* --- MOBİL UYUMLULUK (TAMAMEN YENİLENDİ) --- */
+
 @media (max-width: 600px) {
     body {
-        /* Mobilde ekran kaymasın diye sabitledik */
+      
         overflow-y: auto; 
         height: auto;
         min-height: 100vh;
@@ -149,58 +147,55 @@ button:hover {
     }
 
     .glitch {
-        font-size: 1.8rem; /* Başlığı mobilde küçülttük */
+        font-size: 1.8rem; 
         text-align: center;
     }
 
     .deck {
-        /* Flex yerine Grid kullanarak kartları kutucuklara dizdik */
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* Yan yana 3 kart */
+        grid-template-columns: repeat(3, 1fr); 
         gap: 10px;
         height: auto;
         padding: 20px;
         margin-top: 20px;
-        justify-items: center; /* Kartları ortala */
+        justify-items: center; 
     }
 
     .card {
-        /* Kart boyutlarını telefon ekranına göre ölçekledik */
         width: 90px; 
         height: 140px;
-        /* JS ile gelen 'left' değerini mobilde iptal ediyoruz ki kartlar sağa sola kaymasın */
         left: 0 !important; 
         transform: none !important; 
         position: relative !important;
        
     }
 
-    /* Modal (Seçilen Kart) Ayarları */
+
      .modal .card-inner {
         background-color: rgb(177, 140, 236);
-         width: 70%; /* Ekran genişliğinin %80'i (kenarlardan pay kalır) */
-         height: 55vh; /* Yükseklik de ekranın %65'i */
-         margin: auto; /* Tarayıcı her yönden ortalar */
+         width: 70%; 
+         height: 55vh; 
+         margin: auto;
          max-width: 300px;
-         display: flex; /* İçeriği ortalamak için */
+         display: flex; 
          flex-direction: column;
          align-items: center;
          justify-content: center;
          border: 3px solid var(--soft-purple);
          border-radius: 30px;
-         box-shadow: 0 0 20px rgba(161, 140, 209, 0.4); /* Dışa hafif parlama */
+         box-shadow: 0 0 20px rgba(161, 140, 209, 0.4); 
     
      }
      
-     /* Kartın arka yüzündeki border'ı da yumuşatalım ki iç içe güzel dursun */
+   
      .modal .card-back {
-         border: none; /* Dıştaki card-inner border'ı yettiği için bunu kapattık */
+         border: none; 
          width: 100%;
          height: 100%;
-         border-radius: 17px; /* İç köşe uyumu */
+         border-radius: 17px; 
      }
     .kehanet {
-        font-size: 0.95rem; /* Yazıyı telefonda okunabilir ama küçük yaptık */
+        font-size: 0.95rem; 
         margin-bottom: 40px;
     }
 
@@ -210,6 +205,7 @@ button:hover {
     }
 
     #shuffle-btn {
-        width: 80%; /* Butonu mobilde genişlettik */
+        width: 80%; 
     }
+
 }
