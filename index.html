@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GÜNÜN MESAJI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="overlay"></div> <div class="main-frame">
+        <header>
+            <h1 class="glitch" data-text="GÜNÜN MESAJI">GÜNÜN MESAJI</h1>
+            <p>Evreninn sana bir mesajı var ..</p>
+        </header>
+
+        <div id="deck" class="deck">
+            </div>
+
+        <div class="controls">
+            <button id="shuffle-btn" onclick="shuffleDeck()">KARTLARI KAR</button>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div id="focus-card" class="card-inner">
+            <div class="card-front"></div>
+            <div class="card-back">
+                <div id="typing-text" class="kehanet"></div>
+                <button class="close-btn" onclick="closeModal()">KARTI KAPAT </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
